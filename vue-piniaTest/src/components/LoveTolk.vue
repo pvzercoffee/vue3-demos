@@ -5,22 +5,23 @@
 
 <button @click="getTolk">获取一句土味情话</button>
 <ul>
-  <li v-for="tolk in loveTolkStore.tolkList" :key="tolk.id">{{ tolk.title }}</li>
+  <li v-for="tolk in tolkList" :key="tolk.id">{{ tolk.title }}</li>
 </ul>
 </div>
 </template>
 
 <script lang="ts" setup>
-import axios from "axios"
-import {nanoid} from "nanoid"
-import { useLoveStore } from '@/store/loveTolk';
 
+import { useLoveStore } from '@/store/loveTolk';
 
 const loveTolkStore = useLoveStore();
 
+//频繁loveTolkStore.xxx较为繁琐，通过toStoreRefs响应式解构赋值更简洁，并且比toRefs性能更高
+const { tolkList } = loveTolkStore;
+
 function getTolk()
 {
-  loveTolkStore.getATolk();
+  loveTolkStore.getTolk();
 }
 
 

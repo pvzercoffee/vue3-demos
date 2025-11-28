@@ -2,7 +2,7 @@
 
 <template>
 <div id="comp">
-<h2>当前求和为：{{ countToolStore.sum }}</h2>
+<h2>当前求和为：{{ sum }} 放大十倍后是{{ big10Sum }}</h2>
 <select v-model.number="n">
   <option value="1">1</option>
   <option value="2">2</option>
@@ -16,11 +16,16 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import {useCountToolStore} from '@/store/countTool'
+import { storeToRefs } from 'pinia';
 
 const countToolStore = useCountToolStore();
 //两种方式都可以拿到state中的数据
 // countToolStore.$state.sum
 // countToolStore.sum
+
+//countToolStore.xxx较为繁琐，通过toStoreRefs响应式解构赋值更简洁，并且比toRefs性能更高
+const { sum,big10Sum } = storeToRefs(countToolStore);
+
 
 const n = ref(1);
 
