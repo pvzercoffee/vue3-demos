@@ -16,7 +16,7 @@ export const useLoveStore = defineStore('loveTolk',()=>{
     const result = await axios.get("/api/api.php");
     tolkList.unshift({
       id:nanoid(),
-      title:result.data
+      title:result.data,
     });
   }
   return {tolkList,getTolk}
