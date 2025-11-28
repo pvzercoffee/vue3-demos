@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="inp" placeholder="请输入留言" />
+    <button id="submit">提交</button>
+    <div id="notion">
+        <ul id="list">
+
+        </ul>
+    </div>
+    
+    <script>
+        document.querySelector("#submit").addEventListener('click',()=>{
+            const text = document.querySelector("#inp").value;
+
+            let node = document.createElement("li");
+            node.innerHTML = text;
+            
+            let list = document.querySelector("#list");
+
+           
+                list.prepend(node);
+            
+            
+
+        });
+    </script>
+</body>
+</html>
