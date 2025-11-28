@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            position: relative;
+        }
+        #pwd{
+            width: 300px;
+            height: 40px;
+            position: absolute;
+            left: 50px;
+            padding-left: 50px;
+        }
+        #eye{
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 60px;
+            top: 5px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <input type="password" id="pwd" placeholder="请输入密码" />
+        <img src="images/eye/close.jpg" id="eye" />
+    </div>
+
+    <script>
+        let eye = document.querySelector("#eye");
+        let input = document.querySelector("#pwd");
+        eye.addEventListener('click',()=>{
+            changeStatus();
+        });
+        let status = false;
+        function changeStatus(){
+            
+            if(status)
+            {
+                eye.src="images/eye/close.jpg";
+                pwd.type="password"
+                status = false
+            }
+            else
+            {
+                eye.src="images/eye/open.jpg";
+                pwd.type="text"
+                status = true;
+            }
+            
+        }
+    </script>
+</body>
+</html>
