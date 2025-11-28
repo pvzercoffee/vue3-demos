@@ -24,6 +24,12 @@ function getTolk()
   loveTolkStore.getTolk();
 }
 
+//当loveTolkStore更新，函数被调用。
+loveTolkStore.$subscribe((mutate,state)=>{
+  //更新后存储到local storage
+  localStorage.setItem("tolkList",JSON.stringify(state.tolkList));
+});
+
 
 </script>
 
