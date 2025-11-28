@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #content{
+            margin: auto;
+        }
+        #user_input{
+            width:150px;
+            height:40px;
+            margin:50px;
+            font-size: 17px;
+        }
+        button{
+            width:150px;
+            height:40px;
+            font-size:20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="content">
+        <input type="number" placeholder="输入你猜的数字..."  id="user_input" />
+        <button onclick="confirm()">确认</button>
+        <h2 id="clue"></h2>
+    </div>
+
+    <script>
+        function setClue(msg)
+        {
+            let dom = document.getElementById("clue");
+            dom.innerHTML=msg;
+        }
+        function getUserInput()
+        {
+            let dom = document.getElementById("user_input");
+            return parseInt(dom.value);
+        }
+
+        function getRandom(min, max)
+        {
+            if(!Number.isFinite(min) || !Number.isFinite(max) ) return;
+            if(min > max) return;
+            
+            return Math.floor(Math.random()*(max-min+1))+min;
+        }
+
+        let num = getRandom(0,10);
+        function confirm()
+        {
+            let userInput = getUserInput();
+            if(userInput > num)
+            {
+                setClue("你猜大了");
+            }
+            else if(userInput < num)
+            {
+                setClue("你猜小了");
+            }
+            else if(userInput == num)
+            {
+                setClue("恭喜你猜对了！");
+            }
+            else
+            {
+                setClue("请先输入数字");
+            }
+        }
+
+    </script>
+</body>
+</html>

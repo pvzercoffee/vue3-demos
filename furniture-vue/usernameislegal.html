@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app{
+            margin:100px;
+        }
+        #username{
+            width:250px;
+            height:30px;
+            font-size: 16px;
+        }
+        #submit{
+            height:35px;
+            width:110px ;
+            font-size: 17px;
+        }
+        #clue{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="text" id="username" placeholder="请输入用户名" />
+        <button id="submit">确认</button>
+        <p id="clue"></p>
+    </div>
+    <script>
+        let button = document.querySelector("#submit");
+        button.addEventListener('click',btnClick);
+        function getUsername()
+        {
+            return document.querySelector("#username").value;
+        }
+        function isLegal(username)
+        {
+            
+            if(username.length < 6 || username.length > 10)
+            {
+                return "用户名长度必须在6-10之间";
+            }
+            if(username.toLowerCase().indexOf('admin') !== -1)
+            {
+                return "用户名不得包含非法字符";
+            }
+            return "用户名可以正常使用！";
+        }
+        function btnClick()
+        {
+            let username = getUsername();
+            let clue = isLegal(username);
+            document.querySelector("#clue").innerHTML=clue;
+        }
+    </script>
+</body>
+</html>
