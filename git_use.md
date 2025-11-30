@@ -1,10 +1,11 @@
 ## git使用流程
 
+1. `git config --global user.name "pvzercoffee"` 设置提交身份
+1. `git config --global user.email "pvzercoffee@gmail.com"` 设置提交邮箱
 1. `git init` 进入项目目录，初始化仓库
 1. `git add .` 添加所有文件到暂存区
 1. `git commit -m "注释"` 提交更改
-1. `git config --global user.name "pvzercoffee"` 设置提交身份
-1. `git remote add https://github.com/.../你的仓库.git` 添加远程仓库
+1. `git remote add master https://github.com/.../你的仓库.git` 添加远程仓库
 1. `git remote -v` 验证远程仓库
 1. `git push -u origin master` 推送代码到仓库
 
