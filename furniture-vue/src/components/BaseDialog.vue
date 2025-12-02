@@ -40,7 +40,7 @@ function sendClose(){
     height: 480px;
     margin: 100px auto;
     background-color: #ddd;
-    box-shadow: 0px 1px 10px 10px #666;
+    box-shadow: 0px 10px 10px 10px #666;
 }
 .dialog-detail{
     width: 100%;

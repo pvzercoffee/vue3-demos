@@ -1,0 +1,80 @@
+.banner{
+  background-image: url('@/images/banner5.jpg');
+
+}
+
+.board-card{
+  display: flex;
+  width: 100%;
+  margin-top:50px;
+
+}
+.card-left{
+  width: 350px;
+}
+.card-right{
+  flex: 1;
+  margin-left: 20px;
+}
+.serve-list{
+  list-style-type: none;
+}
+.serve-list>li{
+  margin-top:5px;
+}
+.item-btn{
+  width: 280px;
+  height: 40px;
+  border: 0;
+}
+.left-img{
+  width: 280px;
+  height: 280px;
+  background-image: url('../images/03_f0hi.jpg');
+  background-size: 100% 100%;
+  margin-left: 40px;
+}
+.card-empty{
+  width: 50px;
+}
+.redstar{
+  color: red;
+}
+
+form>input[type='text']{
+  width: 70%;
+  height: 40px;
+  margin-bottom: 30px;
+}
+form>input[type='submit']{
+  width: 70%;
+  height: 40px;
+  margin-top: 30px;
+  color: #fff;
+  background-color: rgb(29, 141, 167);
+  border: 0;
+}
+form>input[type='submit']:hover{
+
+  background-color: rgb(25, 121, 142);
+}
+form>textarea{
+  width: 70%;
+  height: 100px;
+}
+#word_count{
+  color:green;
+}
+@media (max-width: 768px) {
+  .board-card {
+      flex-direction: column;
+      height: auto;
+  }
+  .card-right{
+      width: 350px;
+  }
+  .banner{
+    background-size: auto 100%;
+    background-position: -900px 0;
+  }
+}

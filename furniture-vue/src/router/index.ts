@@ -3,6 +3,7 @@ import Board from '@/pages/Board.vue'
 import Home from '@/pages/Home.vue'
 import Login from '@/pages/Login.vue'
 import ShowProduct from '@/pages/ShowProduct.vue'
+import Signup from '@/pages/Signup.vue'
 
 import {createRouter,createWebHistory} from 'vue-router'
 
@@ -28,6 +29,11 @@ const router = createRouter({
             name:"login",
             path:"/login",
             component:Login
+        },
+        {
+          name:"signup",
+          path:"/signup",
+          component:Signup
         },
         {
             name:"show",

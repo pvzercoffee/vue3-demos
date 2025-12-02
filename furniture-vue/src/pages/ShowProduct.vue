@@ -12,7 +12,6 @@
                   <p class="good-text">￥{{ value.price }}</p>
                   <p class="good-text">{{ value.name }}</p>
                 </div>
-
             </div>
             <div class="show-empty"></div>
         </div>
@@ -150,12 +149,12 @@ function extendsClose(status:string){
   width: 320px;
   /* height: 380px; */
   overflow: hidden;
-  border-radius: 25px;
-  border: 1.5px solid #aaa;
+  border-radius: 15px 15px 0 0;
+  border: 1px solid #666;
   /* padding: 10px; */
   margin:30px;
   padding-bottom: 20px;
-  background-color: rgb(253, 235, 216,0.7);;
+  /* background-color: rgb(253, 235, 216,0.7);; */
 }
 .good-text{
     margin: 0;

@@ -1,17 +1,38 @@
 <template>
-  <swiper class="Carousel">
-    <swiper-slide class="swiper-slide" v-for="value in carouselList" :style="{'background-image':`url(${getResource(value.path)})`}">{{ value.title }}</swiper-slide>
+
+    <swiper
+    :modules="modules"
+    :slides-per-view="1"
+    :space-between="50"
+    :autoplay="{delay:2500,disableOnInteraction:true}"
+    navigation
+    :pagination="{ clickable: true }"
+    :scrollbar="{ draggable: true }"
+    @swiper="onSwiper"
+    @slideChange="onSlideChange"
+  >
+
+  <swiper-slide class="swiper-slide"
+  v-for="value in carouselList"  :key="value.id" :style="{'background-image':`url(${getResource(value.path)})`}">
+    {{ value.title }}
+  </swiper-slide>
 
   </swiper>
 </template>
 <script lang="ts" setup>
-  // Import Swiper Vue.js components
+
   import { Swiper, SwiperSlide } from 'swiper/vue';
-  // Import Swiper styles
-  import 'swiper/css';
-  import '@/styles/carousel.css';
   import type { CarouselInfo } from '@/interface/CarouselInfo';
-  const images = import.meta.glob('/src/images/*.jpg',{eager:true,as:'url'});
+  import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/navigation';
+  import 'swiper/css/pagination';
+  import 'swiper/css/scrollbar';
+
+  const images = import.meta.glob('/src/images/*.jpg',{
+    eager:true,
+    as:'url'
+  });
 
   function getResource(filename:string)
   {
@@ -21,27 +42,36 @@
   const carouselList:CarouselInfo[] = [
     {
       path:'banner.jpg',
-      title:''
+      id:1
     },
     {
       path:'banner1.jpg',
-      title:''
+      id:2
     },
     {
       path:'banner2.jpg',
-      title:''
+      id:3
     }
     ,
     {
       path:'banner3.jpg',
-      title:''
+      id:4
     }
     ,
     {
       path:'banner5.jpg',
-      title:''
+      id:5
     }
   ];
+
+  const onSwiper = (swiper:any) => {
+    // console.log(swiper);
+  };
+  const onSlideChange = () => {
+    // console.log('slide change');
+  };
+  const modules = [Autoplay,Navigation, Pagination, Scrollbar,A11y]
+
 
 
 </script>
@@ -53,4 +83,27 @@
   background-position: center;
 
 }
+.swiper {
+  width: 100%;
+  height: 400px;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #444;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 </style>

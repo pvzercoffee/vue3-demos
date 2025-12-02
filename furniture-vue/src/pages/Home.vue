@@ -1,6 +1,6 @@
 <template>
-    <Carousel />
     <main>
+      <Carousel />
         <div class="slogan">
             <div class="slogan-layout" id="slogan-1">
                 <h3 class="slogan-title">品质高，经久耐用</h3>
@@ -41,117 +41,7 @@
     </main>
 </template>
 <script setup lang="ts">
+import '@/styles/home.css'
 import Carousel from '@/components/Carousel.vue';
 
-// import styles bundle
-import 'swiper/css/bundle';
-
-// init Swiper:
-
-
 </script>
-<style scoped>
-@media (max-width: 768px) {
-    .slogan,#show-left {
-        flex-direction: column;
-        height: auto;
-    }
-    .slogan,.slogan-layout{
-        width: 100%;
-
-    }
-}
-
-.slogan{
-    width:85%;
-    display: flex;
-    margin-top:30px;
-    margin-left:7%
-}
-.slogan-layout{
-    flex: 1;
-    padding:20px 0 20px 0;
-    color: #fff;
-    text-align: center;
-    height: 300px;
-    background-size: 100%;
-}
-#slogan-1{
-    background-image: url('../images/01.jpg');
-}
-#slogan-2{
-    background-image: url('../images/02.jpg');
-}
-#slogan-3{
-    background-image: url('../images/03.jpg');
-}
-.slogan-title{
-    font-size: 28px;
-}
-.slogan-text{
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 30px;
-}
-.show{
-    width:85%;
-    height: 600px;
-    display: flex;
-    gap: 5px;
-    flex-direction: column;
-    margin:20px auto;
-    background-color:rgb(161, 172, 169);
-    padding: 10px;
-}
-#show-left{
-    flex: 1;
-    background-image: url('../images/div1.jpeg');
-    background-size: 100% 100%;
-}
-#show-right{
-    flex: 1;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-.show-right-img{
-    width:calc(50% - 16px);
-    width:calc(50% - 16px);
-    background-size: 100% 100%;
-}
-#show_right_1{
-    background-image: url('../images/1.png');
-}
-#show_right_2{
-    background-image: url('../images/2.png');
-}
-#show_right_3{
-    background-image: url('../images/3.png');
-}
-#show_right_4{
-    background-image: url('../images/4.png');
-}
-.show-right-img:hover,#show-left:hover{
-    box-shadow: 0 0 10px  8px #666;
-}
-.banner-bottom{
-    width:100%;
-    height: 250px;
-    position: absolute;
-    background-image: url('../photos/house.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-.banner-bottom-photos{
-    position: absolute;
-    left: 20px;
-    top: 20px;
-}
-
-  @media (max-width: 768px) {
-  .flex-box,.footer-link-quickly,header,.links {
-    flex-direction: column;
-
-  }
-}
-</style>
