@@ -1,14 +1,13 @@
 <template>
     <main>
+        <Dialog class="dialog" @send="extendsClose" :message="dialogMessage" :style="{'display':dialogShowType}"/>
         <p style="margin-left: 20px;">热销商品</p>
         <div class="show-box">
             <div class="show-left">
-                <div class="double12">
-                    <h3 id="double12_text">距离活动结束还剩</h3>
-                </div>
+              <Double12Timeout />
             </div>
             <div class="show-right">
-                <div class="goods" v-for="value in productList">
+                <div class="goods" @click="showDetail(value)" v-for="value in productList">
                   <div class="good" :style="{backgroundImage:`url(${getImageUrl(value.img)})`}"></div>
                   <p class="good-text">￥{{ value.price }}</p>
                   <p class="good-text">{{ value.name }}</p>
@@ -17,9 +16,16 @@
             </div>
             <div class="show-empty"></div>
         </div>
+
     </main>
 </template>
 <script setup lang="ts">
+import Double12Timeout from '@/components/Double12Timeout.vue';
+import Dialog from '@/components/Dialog.vue';
+import { reactive, ref } from 'vue';
+import { DialogStatus } from '@/pojo/DialogStatus';
+
+
 
 const productList = [
     {
@@ -73,9 +79,40 @@ const getImageUrl = (name:string) => {
   console.log(new URL(name,import.meta.url).href);
   return new URL(name,import.meta.url).href;
 }
+
+let dialogShowType = ref(DialogStatus.hide);
+
+let dialogMessage = reactive({
+  name:'产品',
+  img:'src',
+  price:200
+})
+
+function showDetail(value:any){
+
+  dialogMessage.name = value.name
+  dialogMessage.img = value.img
+
+  console.log(dialogMessage);
+
+  dialogShowType.value = DialogStatus.show
+}
+function extendsClose(status:string){
+  dialogShowType.value = status;
+}
 </script>
 <style scoped>
+.dialog{
 
+    width: 100vw;
+    height: 100vh;
+    top:0px;
+    left:0px;
+    position: fixed;
+    z-index: 10000;
+
+    /* background-color: #eee; */
+}
 
 .banner{
     background-image: url('/images/banner1.jpg');
@@ -90,24 +127,7 @@ const getImageUrl = (name:string) => {
     margin: 20px;
     /* background-color: aqua; */
 }
-.double12{
-    width: 100%;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    background-image: url('@/images/daojishi.jpg');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    color: #fff;
-    /* margin:20px; */
-}
-#double12_text{
-    font-size: 30px;
-    white-space: pre-wrap;
-    text-align: center;
 
-}
 .show-right{
     flex: 1;
     display: flex;
@@ -199,5 +219,6 @@ const getImageUrl = (name:string) => {
       width: 87%;
       margin:30px auto ;
     }
+
 }
 </style>

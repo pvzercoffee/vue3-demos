@@ -51,8 +51,8 @@
                         <span class="font-text">厨房餐饮</span>
 
                         <h4 class="font-text"style="margin-top: 60px;">咨询内容<span class="redstar">*</span></h4>
-                        <p class="font-text" id="word_count">你还能输入100字！</p>
-                        <textarea id="msg_area"></textarea>
+                        <p class="font-text" id="word_count" :style="{'color':hintColor}">{{ hint }}</p>
+                        <textarea id="msg_area" v-model="msg"></textarea>
                         <br>
                         <input type="submit" value="提交">
                     </form>
@@ -64,6 +64,30 @@
 </template>
 <script setup lang="ts">
 import MainBanner from '@/components/MainBanner.vue';
+import { computed, ref, watch } from 'vue';
+
+const maxInput = 100;
+let hintColor = 'green'
+
+let msg = ref('');
+let hint = `你还能输入${maxInput}个字`;
+
+const words = computed(()=>{
+  return maxInput - msg.value.length
+});
+
+watch(words,()=>{
+  if(words.value < 0)
+  {
+    hint = `您已超出${-words.value}个字`
+    hintColor = 'red'
+    return;
+  }
+
+  hint = `您还可以输入${words.value}个字`
+  hintColor = 'green;'
+
+});
 
 </script>
 <style scoped>

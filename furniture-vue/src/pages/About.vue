@@ -3,7 +3,7 @@
         <div class="about-left"></div>
         <div class="about-right">
             <section>
-                <h1>我们的优势</h1>
+                <h1>我们的业绩上升情况</h1>
                 <div id="chart"></div>
             </section>
             <section>
@@ -39,27 +39,29 @@
 import * as echarts from 'echarts';
 import { onMounted } from 'vue';
 
-// onMounted(()=>{
-//   var myChart = echarts.init(document.getElementById('chart'));
-//   // 绘制图表
-//   myChart.setOption({
-//   title: {
-//     text: 'ECharts 入门示例'
-//   },
-//   tooltip: {},
-//   xAxis: {
-//     data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-//   },
-//   yAxis: {},
-//   series: [
-//     {
-//       name: '销量',
-//       type: 'bar',
-//       data: [5, 20, 36, 10, 10, 20]
-//     }
-//   ]
-//   });
-// });
+onMounted(()=>{
+  var myChart = echarts.init(document.getElementById('chart'));
+  // 绘制图表
+  const option = {
+  xAxis: {
+    type: 'category',
+    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      data: [150, 230, 400, 485, 488, 567, 999],
+      type: 'line'
+    }
+  ]
+};
+
+
+
+  myChart.setOption(option);
+});
 </script>
 <style scoped>
 @media (max-width: 768px) {
