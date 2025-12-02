@@ -1,6 +1,6 @@
 <template>
     <main>
-        <Dialog class="dialog" @send="extendsClose" :message="dialogMessage" :style="{'display':dialogShowType}"/>
+        <BaseDialog class="dialog" @send="extendsClose" :message="dialogMessage" :style="{'display':dialogShowType}"/>
         <p style="margin-left: 20px;">热销商品</p>
         <div class="show-box">
             <div class="show-left">
@@ -21,9 +21,10 @@
 </template>
 <script setup lang="ts">
 import Double12Timeout from '@/components/Double12Timeout.vue';
-import Dialog from '@/components/Dialog.vue';
+import BaseDialog from '@/components/BaseDialog.vue';
 import { reactive, ref } from 'vue';
-import { DialogStatus } from '@/pojo/DialogStatus';
+import { DialogStatus } from '@/constants/DialogStatus';
+import type { ProductMessage } from '@/interface/DialogMessage';
 
 
 
@@ -82,18 +83,17 @@ const getImageUrl = (name:string) => {
 
 let dialogShowType = ref(DialogStatus.hide);
 
-let dialogMessage = reactive({
-  name:'产品',
-  img:'src',
-  price:200
-})
+let dialogMessage:ProductMessage = {
+  name:'',
+  img:'',
+  price:0
+};
 
-function showDetail(value:any){
+function showDetail(value:ProductMessage){
 
   dialogMessage.name = value.name
   dialogMessage.img = value.img
-
-  console.log(dialogMessage);
+  dialogMessage.price = value.price
 
   dialogShowType.value = DialogStatus.show
 }

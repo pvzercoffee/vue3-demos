@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { DialogStatus } from '@/pojo/DialogStatus';
+import { DialogStatus } from '@/constants/DialogStatus';
 import { toRefs } from 'vue';
 
 const props = defineProps<{

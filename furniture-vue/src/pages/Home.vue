@@ -42,6 +42,13 @@
 </template>
 <script setup lang="ts">
 import MainBanner from '@/components/MainBanner.vue';
+import Swiper from 'swiper/bundle';
+
+// import styles bundle
+import 'swiper/css/bundle';
+
+// init Swiper:
+
 
 </script>
 <style scoped>

@@ -7,23 +7,69 @@
         <div class="login-frame">
             <div class="login">
                 <span class="font-text">用户名：</span>
-                <input type="text" name="username" pattern="[A-Za-z0-9]" maxlength="16" minlength="4" id="input_username" placeholder="只能输入字母或数字，4-16个"/>
+                <input type="text" name="username" pattern="[A-Za-z0-9]" id="input_username"
+                :maxlength="nameMaxLength" :minlength="nameMinLength"
+                v-model="username"
+                :placeholder="`只能输入字母或数字，${nameMinLength}-${nameMaxLength}个`"/>
 
                 <div class="login-empty"></div>
 
                 <span class="font-text">密&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
-                <input type="password" name="password" pattern="[A-Za-z0-9]" maxlength="12" minlength="6" id="input_password" placeholder="密码长度6-12位"/>
+                <input type="password" name="password" pattern="[A-Za-z0-9]"
+                v-model="password"
+                :maxlength="pwdMaxLength" :minlength="pwdMinLength" id="input_password"
+                :placeholder="`密码长度${pwdMinLength}-${pwdMaxLength}位`"/>
 
                 <div class="login-empty"></div>
-                <p id="form_hint">&nbsp;</p>
-                <button class="btn-yellow" id="btn_login">登录</button>
-                <button class="btn-yellow" id="btn_register">注册</button>
+                <p id="form_hint" :style="{'color':hintColor}">&nbsp;{{ hint }}</p>
+                <button class="btn-yellow" @click="login" id="btn_login">登录</button>
+                <button class="btn-yellow" @click="login" id="btn_register">注册</button>
             </div>
         </div>
       </div>
 </template>
 <script setup lang="ts">
 import MainBanner from '@/components/MainBanner.vue';
+import { HintColors } from '@/constants/HintColors';
+import { ref } from 'vue';
+
+const InputLimit = {
+  nameMaxLength : 16,
+  nameMinLength : 4,
+  pwdMaxLength : 12,
+  pwdMinLength : 6
+}
+
+const {nameMaxLength,nameMinLength,pwdMaxLength,pwdMinLength} = InputLimit;
+
+let username = ref('');
+let password = ref('');
+let hint = ref('');
+let hintColor = ref(HintColors.normal)
+function login(){
+  inputVerify();
+}
+
+function inputVerify(){
+
+  const nameLength = username.value.length;
+  const pwdLength = password.value.length;
+
+  let isVerify = false;
+
+  if(nameLength < nameMinLength) hint.value = '用户名过短';
+  else if(nameLength > nameMaxLength) hint.value = '用户名过长';
+  else if(pwdLength < pwdMinLength) hint.value = '密码过短';
+  else if(pwdLength > pwdMaxLength) hint.value = '密码过长';
+  else
+  {
+    isVerify = true;
+    hint.value = '输入合法';
+  }
+
+  hintColor.value = isVerify ? HintColors.legal : HintColors.illegal;
+
+}
 
 </script>
 <style scoped>
@@ -93,3 +139,4 @@ import MainBanner from '@/components/MainBanner.vue';
     }
 }
 </style>
+

@@ -3,11 +3,11 @@
     <div class="logo"></div>
     <ul class="items">
 
-      <li><RouterLink replace :to="{name:'login'}" class="nav-link">登录注册</RouterLink></li>
         <li><RouterLink replace :to="{name:'home'}" class="nav-link">首页</RouterLink></li>
         <li><RouterLink replace :to="{name:'show'}" class="nav-link">产品展示</RouterLink></li>
         <li><RouterLink replace :to="{name:'about'}" class="nav-link">关于我们</RouterLink></li>
         <li><RouterLink replace :to="{name:'board'}" class="nav-link">在线留言</RouterLink></li>
+        <li><RouterLink replace :to="{name:'login'}" class="nav-link">登录注册</RouterLink></li>
 
     </ul>
 </nav>
