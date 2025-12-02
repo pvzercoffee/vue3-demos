@@ -14,7 +14,8 @@
     display: flex;
     background-image: url('@/images/2.jpg');
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
     /* margin-top:15px; */
 }
 @media(max-width:768px){

@@ -24,75 +24,74 @@ import Double12Timeout from '@/components/Double12Timeout.vue';
 import BaseDialog from '@/components/BaseDialog.vue';
 import { reactive, ref } from 'vue';
 import { DialogStatus } from '@/constants/DialogStatus';
-import type { ProductMessage } from '@/interface/DialogMessage';
+import type { ProductInfo } from '@/interface/DialogInfo';
 
-
+const images = import.meta.glob('/src/photos/*',{eager:true,as:'url'});
 
 const productList = [
     {
-        img: "/photos/pro1.png",
+        img: "pro1.png",
         name: "实木照片墙 创意墙面小墙贴纸",
         price: 400.00
     },
     {
-        img: "/photos/pro2.png",
+        img: "pro2.png",
         name: "馨竹家居 茶几边的加厚丝毛绿地毯",
         price: 400.00
     },
     {
-        img: "/photos/pro3.png",
+        img: "pro3.png",
         name: "可爱小脚丫 浴室门口防滑地垫脚垫",
         price: 100.00
     },
     {
-        img: "/photos/pro4.png",
+        img: "pro4.png",
         name: "地中海客厅照片墙 地中海风情客厅",
         price: 300.00
     },
     {
-        img: "/photos/pro5.png",
+        img: "pro5.png",
         name: "相框墙 装饰相框墙 新品组合套装",
         price: 990.00
     },
     {
-        img: "/photos/pro6.png",
+        img: "pro6.png",
         name: "海藻绿 3d系列进门垫 卫生间地垫",
         price: 200.00
     },
     {
-        img: "/photos/pro7.png",
+        img: "pro7.png",
         name: "可爱小脚丫 浴室门口防滑地垫脚垫",
         price: 100.00
     },
     {
-        img: "/photos/pro8.png",
+        img: "pro8.png",
         name: "长绒素色地毯 卧室客厅床边地毯垫子",
         price: 100.00
     },
     {
-        img: "/photos/pro9.jpg",
+        img: "pro9.jpg",
         name: "竹妃 纸买就送 116抽家庭装6包",
         price: 60.00
     }
 ];
 
 const getImageUrl = (name:string) => {
-  console.log(new URL(name,import.meta.url).href);
-  return new URL(name,import.meta.url).href;
+  return images[`/src/photos/${name}`];
 }
 
 let dialogShowType = ref(DialogStatus.hide);
 
-let dialogMessage:ProductMessage = {
+let dialogMessage:ProductInfo = reactive({
   name:'',
   img:'',
   price:0
-};
+})
 
-function showDetail(value:ProductMessage){
+function showDetail(value:ProductInfo){
 
   dialogMessage.name = value.name
-  dialogMessage.img = value.img
+  dialogMessage.img = getImageUrl(value.img) || ''
   dialogMessage.price = value.price
 
   dialogShowType.value = DialogStatus.show

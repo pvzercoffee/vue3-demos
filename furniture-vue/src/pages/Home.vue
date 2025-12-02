@@ -1,5 +1,5 @@
 <template>
-    <MainBanner />
+    <Carousel />
     <main>
         <div class="slogan">
             <div class="slogan-layout" id="slogan-1">
@@ -32,17 +32,16 @@
             </div>
         </div>
         <div class="banner-bottom">
-            <img src="/photos/bed.png" width="200" class="banner-bottom-photos">
-            <img src="/photos/cupboard.png" width="200" class="banner-bottom-photos">
-            <img src="/photos/chair.png" width="200" class="banner-bottom-photos">
-            <img src="/photos/table.png" width="200" class="banner-bottom-photos">
+            <img src="@/photos/bed.png" width="200" class="banner-bottom-photos">
+            <img src="@/photos/cupboard.png" width="200" class="banner-bottom-photos">
+            <img src="@/photos/chair.png" width="200" class="banner-bottom-photos">
+            <img src="@/photos/table.png" width="200" class="banner-bottom-photos">
         </div>
         <div style="height: 250px;"></div>
     </main>
 </template>
 <script setup lang="ts">
-import MainBanner from '@/components/MainBanner.vue';
-import Swiper from 'swiper/bundle';
+import Carousel from '@/components/Carousel.vue';
 
 // import styles bundle
 import 'swiper/css/bundle';
