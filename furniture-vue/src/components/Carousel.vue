@@ -41,25 +41,25 @@
 
   const carouselList:CarouselInfo[] = [
     {
-      path:'banner.jpg',
+      path:'lunbo1.jpg',
       id:1
     },
     {
-      path:'banner1.jpg',
+      path:'lunbo2.jpg',
       id:2
     },
     {
-      path:'banner2.jpg',
+      path:'lunbo3.jpg',
       id:3
     }
     ,
     {
-      path:'banner3.jpg',
+      path:'2.jpg',
       id:4
     }
     ,
     {
-      path:'banner5.jpg',
+      path:'4.jpg',
       id:5
     }
   ];
@@ -77,12 +77,7 @@
 </script>
 
 <style scoped>
-.swiper-slide{
-  background-repeat: no-repeat;
-  background-size:cover;
-  background-position: center;
 
-}
 .swiper {
   width: 100%;
   height: 400px;
@@ -92,7 +87,9 @@
   text-align: center;
   font-size: 18px;
   background: #444;
-
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
   /* Center slide text vertically */
   display: flex;
   justify-content: center;

@@ -1,3 +1,5 @@
+
+<!-- 此为静态的banner，已经不使用，目前已经全部换成Swiper的Carousel -->
 <template>
     <div class="banner">
     </div>

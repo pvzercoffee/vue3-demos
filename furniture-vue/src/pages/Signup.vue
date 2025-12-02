@@ -1,142 +1,100 @@
 <template>
-  <div class="page-login">
-    <MainBanner />
-      <h1 class="path">首页>>登录Saobi /注册</h1>
-      <h2 class="title-big">登录/注册</h2>
+  <div class="page-signup">
+    <Carousel />
+      <h1 class="path">首页>>注册</h1>
+      <h2 class="title-big">注册</h2>
       <hr class="color-hr">
       <div class="login-frame">
-          <form class="login">
-              <span class="font-text">用户名：</span>
-              <input type="text" name="username" pattern="[A-Za-z0-9]" id="input_username" autocomplete="username"
-              :maxlength="nameMaxLength" :minlength="nameMinLength"
-              v-model="username"
-              :placeholder="`只能输入字母或数字，${nameMinLength}-${nameMaxLength}个`"/>
+          <div class="login">
+            <h1>新用户注册</h1>
+            <form class="main-form">
+              <div style="margin: auto;">
+                <div class="column">
+                  <p class="font-text">用户名</p>
+                  <input type="text" class="form-input" placeholder="请输入用户名"  autocomplete="username" />
+                  <p class="font-error">&nbsp;</p>
+                </div>
 
-              <div class="login-empty"></div>
+                <div class="column">
+                  <p class="font-text">密码</p>
+                  <input type="text" class="form-input" placeholder="请输入密码"  autocomplete="current-password" />
+                  <p class="font-error">&nbsp;</p>
+                  <br />
+                </div>
 
-              <span class="font-text">密&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
-              <input type="password" name="password" pattern="[A-Za-z0-9]" autocomplete="current-password"
-              v-model="password"
-              :maxlength="pwdMaxLength" :minlength="pwdMinLength" id="input_password"
-              :placeholder="`密码长度${pwdMinLength}-${pwdMaxLength}位`"/>
+                <div class="column">
+                  <p class="font-text">电子邮件</p>
+                  <input type="email" class="form-input" placeholder="请输入邮箱"  autocomplete="email" />
+                  <p class="font-error">&nbsp;</p>
+                  <br />
+                </div>
 
-              <div class="login-empty"></div>
-              <p id="form_hint" :style="{'color':hintColor}">&nbsp;{{ hint }}</p>
-              <button class="btn-yellow" @click="login" id="btn_login">登录</button>
-              <button class="btn-yellow" @click="login" id="btn_register">注册</button>
-          </form>
+                <div class="column">
+                  <p class="font-text">姓名</p>
+                  <input type="text" class="form-input" placeholder="请输入真实姓名"  autocomplete="name" />
+                  <p class="font-error">&nbsp;</p>
+                  <br />
+                </div>
+
+                <div class="column">
+                  <p class="font-text">手机号</p>
+                  <input type="text" class="form-input" placeholder="请输入可用手机号"  autocomplete="tel" />
+                  <p class="font-error">&nbsp;s</p>
+                </div>
+
+                <div class="column">
+                  <p class="font-text">性别</p>
+                  <input type="radio" name="gender" value="male"/>男
+                  <input type="radio" name="gender" value="female"/>女
+                  <br />
+                </div>
+
+                <div class="column">
+                  <p class="font-text">出生日期</p>
+                  <input type="date" class="form-input"  autocomplete="tel" />
+                  <p class="font-error">&nbsp;</p>
+                  <br />
+                </div>
+
+                <div class="column">
+                  <p class="font-text">验证码</p>
+                  <input type="text" style="width: 100px;" placeholder="请输入验证码"  class="form-input"  autocomplete="tel" />
+                  <img src="@/images/验证码.png" class="verify-code"></img>
+                  <p class="font-error">&nbsp;</p>
+                </div>
+
+                <div class="column" style="margin: 50px 0 0 15px;">
+                  <button class="btn-yellow">注册</button>
+                  <p style="margin-left: 15px;">已有账号？<RouterLink :to="{name:'login'}">立即登录</RouterLink></p>
+                </div>
+              </div>
+
+            </form>
+          </div>
       </div>
     </div>
 </template>
 <script setup lang="ts">
-import MainBanner from '@/components/MainBanner.vue';
+
+import Carousel from '@/components/Carousel.vue';
 import { HintColors } from '@/constants/HintColors';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import '@/styles/loginAndSignup.css'
 
-const InputLimit = {
-nameMaxLength : 16,
-nameMinLength : 4,
-pwdMaxLength : 12,
-pwdMinLength : 6
-}
 
-const {nameMaxLength,nameMinLength,pwdMaxLength,pwdMinLength} = InputLimit;
-
-let username = ref('');
-let password = ref('');
-let hint = ref('');
-let hintColor = ref(HintColors.normal)
-function login(){
-inputVerify();
-}
-
-function inputVerify(){
-
-const nameLength = username.value.length;
-const pwdLength = password.value.length;
-
-let isVerify = false;
-
-if(nameLength < nameMinLength) hint.value = '用户名过短';
-else if(nameLength > nameMaxLength) hint.value = '用户名过长';
-else if(pwdLength < pwdMinLength) hint.value = '密码过短';
-else if(pwdLength > pwdMaxLength) hint.value = '密码过长';
-else
-{
-  isVerify = true;
-  hint.value = '输入合法';
-}
-
-hintColor.value = isVerify ? HintColors.legal : HintColors.illegal;
-
-}
 
 </script>
+
 <style scoped>
-
-
-.banner{
-  background-image: url('@/images/banner1.jpg');
-}
 .login-frame{
-  width: 80%;
-  margin: 60px 0 0 10%;
-  height: 500px;
-  background-image: url('@/images/登录.jpg');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  border: 1px solid #888;
-}
-.login{
-  width:60%;
-  margin: 8% 0 0 20%;
-  background-color: #fff;
-  text-align: center;
-  padding: 20px 0 20px 0;
-  border: 3px solid #888;
+  background-image: url('@/images/注册.jpg');
 
 }
-.login-empty{
-  height: 40px;
-}
-
-.login>input[type='text'],.login>input[type='password']{
-  width: 200px;
-  height: 40px;
-}
-
-.btn-yellow{
-  width: 200px;
-  height: 40px;
-  border: 0;
-  background-color: rgb(230, 213, 116);
-  margin-top: 20px;
-}
-.btn-yellow:hover{
-  background-color: rgb(213, 197, 109);
-}
-.login>#btn_register{
-  margin-left: 50px;
-
-}
-@media (max-width: 768px) {
-
-  .login-frame{
-      margin:80px 0 0 0;
-      width: calc(100% - 2px);
-      background-size: auto auto;
-  }
-  .login{
-      width: calc(100% - 7px);
-      margin:20% 0 0 0;
-  }
-  .login>#btn_register{
-      margin-left: 0;
-  }
-  .banner{
-    background-size: auto 100%;
-    background-position: -900px 0;
-  }
+.verify-code{
+  height: 36px;
+  margin: auto;
+  /* flex: 1; */
+  margin-left: 15px;
 }
 </style>
-
