@@ -7,7 +7,7 @@
 1. `git commit -m "注释"` 提交更改
 1. `git config --global user.name "pvzercoffee"` 设置提交身份
 1. `git config --global user.email = "pvzercoffee@gmail.com"`设置提交邮箱
-1. `git remote add https://github.com/.../你的仓库.git` 添加远程仓库
+1. `git remote add 仓库名 https://github.com/.../你的仓库.git` 添加远程仓库
 1. `git remote -v` 验证远程仓库
 1. `git push -u origin master` 推送代码到仓库
 
