@@ -5,26 +5,36 @@
         <h2 class="title-big">登录/注册</h2>
         <hr class="color-hr">
         <div class="login-frame">
-            <div class="login">
+            <form class="login">
+
+              <div class="column">
                 <span class="font-text">用户名：</span>
-                <input type="text" name="username" pattern="[A-Za-z0-9]" class="form-input" id="input_username" autocomplete="username"
+                <input type="text" name="username" pattern="[A-Za-z0-9]" class="form-input"  autocomplete="username"
                 :maxlength="nameMaxLength" :minlength="nameMinLength"
                 v-model="username"
                 :placeholder="`只能输入字母或数字，${nameMinLength}-${nameMaxLength}个`"/>
+              </div>
 
-                <div class="login-empty"></div>
-
+              <div class="column">
                 <span class="font-text">密&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
                 <input type="password" name="password" pattern="[A-Za-z0-9]"class="form-input"  autocomplete="current-password"
                 v-model="password"
                 :maxlength="pwdMaxLength" :minlength="pwdMinLength" id="input_password"
                 :placeholder="`密码长度${pwdMinLength}-${pwdMaxLength}位`"/>
+              </div>
 
-                <div class="login-empty"></div>
+              <div class="column">
                 <p class="form_hint" :style="{'color':hintColor}">&nbsp;{{ hint }}</p>
+              </div>
+
+              <div class="column">
                 <button type="button" class="btn-yellow" @click="login" id="btn_login">登录</button>
                 <button type="button" class="btn-yellow" @click="signup" id="btn_register">注册</button>
               </div>
+
+
+
+            </form>
         </div>
       </div>
 </template>
@@ -85,6 +95,10 @@ function signup(){
 <style scoped>
 .login-frame{
   background-image: url('@/images/登录.jpg');
+}
+
+#btn_register{
+  margin-left: 25px;
 }
 </style>
 

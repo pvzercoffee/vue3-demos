@@ -13,14 +13,9 @@ import {RouterView} from 'vue-router'
   <div class="main-content">
     <RouterView class="main-content"></RouterView>
   </div>
-
   <MainFooter />
 </template>
 
 <style scoped>
 @import url('@/styles/global.css');
-
-.main-content{
-  /* height: 500px; */
-}
 </style>
