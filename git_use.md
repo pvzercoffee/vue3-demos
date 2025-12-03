@@ -1,16 +1,19 @@
 ## git使用流程
 
+# 初次设置
 1. `git config --global user.name "pvzercoffee"` 设置提交身份
 1. `git config --global user.email "pvzercoffee@gmail.com"` 设置提交邮箱
+
+# 初次创建仓库
+1. 在GitHub创建一个 空仓库，不要包括任何包括介绍文件
 1. `git init` 进入项目目录，初始化仓库
 1. `git add .` 添加所有文件到暂存区
 1. `git commit -m "注释"` 提交更改
-1. `git config --global user.name "pvzercoffee"` 设置提交身份
-1. `git config --global user.email = "pvzercoffee@gmail.com"`设置提交邮箱
-1. `git remote add 仓库名 https://github.com/.../你的仓库.git` 添加远程仓库
+
+# 提交到远程仓库
+1. `git remote add 别名 https://github.com/.../你的仓库.git` 添加远程仓库
 1. `git remote -v` 验证远程仓库
 1. `git push -u origin master` 推送代码到仓库
-
 
 ## 首次推送后，只需要简单push即可
 1. `git push` 推送代码到仓库
