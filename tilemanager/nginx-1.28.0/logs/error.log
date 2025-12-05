@@ -158,3 +158,4 @@
 2025/12/03 13:27:44 [emerg] 30500#11980: CreateDirectory() "D:\projects\WebProject\vue3-demos\tilemanager\nginx-1.28.0/temp/client_body_temp" failed (3: The system cannot find the path specified)
 2025/12/03 13:28:28 [emerg] 28468#24008: CreateDirectory() "D:\projects\WebProject\vue3-demos\tilemanager\nginx-1.28.0/temp/client_body_temp" failed (3: The system cannot find the path specified)
 2025/12/03 13:29:30 [emerg] 22704#20980: CreateDirectory() "D:\projects\WebProject\vue3-demos\tilemanager\nginx-1.28.0/temp/client_body_temp" failed (3: The system cannot find the path specified)
+2025/12/04 15:07:28 [error] 28656#13552: *1 CreateFile() "D:\projects\WebProject\vue3-demos\tilemanager\nginx-1.28.0/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:90", referrer: "http://localhost:90/"

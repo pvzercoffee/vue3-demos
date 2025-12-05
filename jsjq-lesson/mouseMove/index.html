@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片跟随鼠标</title>
+</head>
+<body>
+    <img src="images/run2.gif" width="60" id="myImg" />
+
+    <script>
+        let img = document.querySelector("#myImg");
+        document.addEventListener('mousemove',(e)=>{
+            const x = e.pageX;
+            const y = e.pageY;
+
+            img.style.left = x+"px";
+            img.style.top = y+"px";
+
+            console.log(`(${x},${y})`);
+        });
+    </script>
+    <style>
+        #myImg{
+            position: absolute;
+            
+        }
+    </style>
+</body>
+</html>
