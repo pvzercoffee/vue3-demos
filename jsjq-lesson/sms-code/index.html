@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <span>手机号码：</span>
+    <input type="tel" placeholder="请输入手机号码" />
+    <button type=">button" id="send">发送</button>
+
+    <script>
+        const send = document.querySelector("#send");
+        let time = 60;
+
+        send.addEventListener('click',()=>{
+            send.disabled = true;
+            const reduce = setInterval(()=>{
+                send.textContent = time + "秒后重新发送";
+                time--;
+
+                if(time <= 0){
+                    send.textContent = "发送";
+                    time = 60;
+                    send.disabled = false;
+                    console.log('test');
+                    clearInterval(reduce);
+                    
+                }
+            },1000);
+
+           
+        })
+    </script>
+</body>
+</html>
